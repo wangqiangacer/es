@@ -1,0 +1,19 @@
+1.es每个索引库都默认分为5片，为了高可用5片节点又做了复制
+2.es搭建集群
+#配置跨域问题
+http.cors.enabled: true
+http.cors.allow-origin: /.*/
+
+#节点一的配置信息
+cluster.name: my-elasticsearch
+#节点名称
+node.name: node-1
+#本机的IP
+network.host: 127.0.0.1
+#服务端口号，同一台机器下必须不一样
+http.port: 9201
+#集群间通信端口号
+transport.tcp.port: 9301
+#设置集群自动发现IP集合
+discovery.zen.ping.unicast.host: ["127.0.0.1:9301","127.0.0.1:9302","127.0.0.1:9303"]
+3.他的副本和主节点部署在不同机器上
